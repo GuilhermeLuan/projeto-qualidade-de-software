@@ -1,14 +1,15 @@
+import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity()
 
 export class Tarefa{
     @PrimaryGeneratedColumn()
-    id: number
+    id!: number
     @Column()
-    titulo: string
+    titulo!: string
     @Column()
-    descricao: string
+    descricao!: string
     @Column()
-    estaCompleta: boolean
+    estaCompleta!: boolean
 }
 
