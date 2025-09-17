@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    /* Onde salvar o código compilado */
+    "outDir": "./dist",
+    /* Onde está o seu código-fonte */
+    "rootDir": "./src",
+    
+    /* Configurações do Módulo e do JavaScript de Saída */
+    "target": "ES2020",
+    "module": "NodeNext",
+    
+    /* Configurações Essenciais para Modo Misto e TypeORM */
+    "allowJs": true,                   // Permite que arquivos .js sejam processados
+    "experimentalDecorators": true,    // Habilita o uso de @Decorators
+    "emitDecoratorMetadata": true,     // Habilita a emissão de metadados para os decoradores
+    "esModuleInterop": true,           // Melhora a compatibilidade entre módulos
+
+    /* Rigor e Qualidade de Código */
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"] // Diz ao compilador para olhar todos os arquivos dentro da 'src'
+}
