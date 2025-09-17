@@ -1,1 +1,5 @@
-console.log('Teste de build do projeto...');
+AppDataSource.initialize()
+.then(() => {
+    console.log ("Inicializando o banco;)")
+}) 
+.catch((error) => console.log ("Erro ao inicializar o banco de dados :(", error))
