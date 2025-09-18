@@ -1,5 +1,6 @@
 import { AppDataSource } from "../data-source.js";
 import { Tarefa } from "../entities/Tarefa.entity.js";
+import Router from "express"
 
 //criando as rotas
 const router = Router();
@@ -11,3 +12,5 @@ router.post("/tarefas", (req, res) => {
     tarefaRepository.save(tarefa);
     res.status(201).json(tarefa);
 });
+
+export default router;
