@@ -111,7 +111,7 @@ p {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s;
-    position: relative; /* Adicionado para posicionar o checkmark */
+    position: relative;
 }
 
 .checkbox-circle.completed {
@@ -119,7 +119,7 @@ p {
     border-color: #558151;
 }
 
-/* Adicionamos o checkmark */
+
 .checkbox-circle.completed::after {
     content: '✓';
     color: white;
