@@ -7,8 +7,9 @@ const router = Router();
 
 router.post("/tarefas", (req, res) => {
     const {titulo, descricao} = req.body;
+    const estaCompleta = false;
     const tarefaRepository = AppDataSource.getRepository(Tarefa);
-    const tarefa = tarefaRepository.create({titulo, descricao});
+    const tarefa = tarefaRepository.create({titulo, descricao, estaCompleta});
     tarefaRepository.save(tarefa);
     res.status(201).json(tarefa);
 });
