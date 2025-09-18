@@ -28,4 +28,18 @@ router.delete("/tarefas/:id", (req, res) => {
     console.log("Tarefa apagada com sucesso!")
 })
 
+//criando a rota para marcar e desmarcar a tarefa como completa
+router.patch("/tarefas/:id", (req, res) => {
+    const id = req.params.id;
+    const tarefaRepository = AppDataSource.getRepository(Tarefa);
+    const estaCompleta = req.body.estaCompleta;
+    tarefaRepository.update(
+        { id: id },
+        { estaCompleta: estaCompleta }
+    ); 
+    res.status(204).json();
+
+    console.log("Tarefa marcada/desmarcada com sucesso!")
+});
+
 export default router;
