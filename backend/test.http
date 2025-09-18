@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Nova Tarefa",
+  "descricao": "Descrição da nova tarefa"
+}
+
+# arrumar depois
+###
+DELETE http://localhost:3000/api/tarefas/8
