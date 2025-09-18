@@ -42,4 +42,10 @@ router.patch("/tarefas/:id", async (req, res) => {
     console.log("Tarefa marcada/desmarcada com sucesso!")
 });
 
+router.get("/tarefas", async (req, res) => {
+    const tarefaRepository = AppDataSource.getRepository(Tarefa);
+    const listaTarefas = await tarefaRepository.find()
+    res.status(200).json(listaTarefas)
+})
+
 export default router;
