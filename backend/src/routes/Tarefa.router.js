@@ -21,13 +21,18 @@ router.post("/tarefas", async (req, res) => {
 // Tratar possibilidade de tentar apagar uma tarefa com id inexistente
 router.delete("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
-    const tarefaRepository = AppDataSource.getRepository(Tarefa);
-    await tarefaRepository.delete({
-        id: id
-    })
-    res.status(204).json();
-    
-    console.log("Tarefa apagada com sucesso!")
+    try {
+        const tarefaRepository = AppDataSource.getRepository(Tarefa);
+        await tarefaRepository.delete({
+            id: id
+        })
+        res.status(204).json();
+        
+        console.log("Tarefa apagada com sucesso!")
+    } catch (error) {
+        console.error("Erro ocorreu ao deletar a tarefa.", error)
+        res.status(500).json({ message: "Erro ocorreu ao deletar a tarefa." })
+    }
 })
 
 //criando a rota para marcar e desmarcar a tarefa como completa
