@@ -17,3 +17,44 @@ main {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 strong {
+    font-weight: 900;
+}
+
+.checkmark-icon {
+    font-size: 1.2em;
+    margin-right: 5px;
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+.normal-weight {
+    font-weight: 400;
+}
+
+p {
+    color: #888;
+    margin: 5px 0 0;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
