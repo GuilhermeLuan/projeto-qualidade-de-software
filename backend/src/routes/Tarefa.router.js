@@ -5,6 +5,7 @@ import Router from "express"
 //criando as rotas
 const router = Router();
 
+// Tratar possibilidade de upar dados vazios
 router.post("/tarefas", async (req, res) => {
     const {titulo, descricao} = req.body;
     const estaCompleta = false;
@@ -17,6 +18,7 @@ router.post("/tarefas", async (req, res) => {
     console.log("Tarefa criada com sucesso!")
 });
 
+// Tratar possibilidade de tentar apagar uma tarefa com id inexistente
 router.delete("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     const tarefaRepository = AppDataSource.getRepository(Tarefa);
@@ -29,6 +31,7 @@ router.delete("/tarefas/:id", async (req, res) => {
 })
 
 //criando a rota para marcar e desmarcar a tarefa como completa
+// ver como vai ser pra adaptar isso ao front
 router.patch("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     const tarefaRepository = AppDataSource.getRepository(Tarefa);
@@ -41,5 +44,13 @@ router.patch("/tarefas/:id", async (req, res) => {
 
     console.log("Tarefa marcada/desmarcada com sucesso!")
 });
+
+// Retorno das tarefas pro front em formato JSON
+// Tentar retornar uma mensagem padrão de "Vazio" em caso de nenhuma tarefa existir no banco
+router.get("/tarefas", async (req, res) => {
+    const tarefaRepository = AppDataSource.getRepository(Tarefa);
+    const listaTarefas = await tarefaRepository.find()
+    res.status(200).json(listaTarefas)
+})
 
 export default router;
