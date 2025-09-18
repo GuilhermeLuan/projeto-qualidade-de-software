@@ -23,6 +23,11 @@ router.delete("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     try {
         const tarefaRepository = AppDataSource.getRepository(Tarefa);
+        const tarefaParaDel = await tarefaRepository.findOneBy({ id: id })
+        if (!tarefaParaDel) {
+            res.status(404).json({ message: "Tarefa inexistente." })
+        }
+
         await tarefaRepository.delete({
             id: id
         })
