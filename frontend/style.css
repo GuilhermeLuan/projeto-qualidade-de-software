@@ -103,3 +103,35 @@ p {
     margin-left: 10px;
     font-size: 1em;
 }
+
+.checkbox-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative; /* Adicionado para posicionar o checkmark */
+}
+
+.checkbox-circle.completed {
+    background-color: #3da86a;
+    border-color: #558151;
+}
+
+/* Adicionamos o checkmark */
+.checkbox-circle.completed::after {
+    content: '✓';
+    color: white;
+    font-size: 0.8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.task-text.completed {
+    color: #87af87;
+}
+
