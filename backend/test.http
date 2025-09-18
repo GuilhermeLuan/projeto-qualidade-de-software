@@ -6,6 +6,13 @@ Content-Type: application/json
   "descricao": "Descrição da nova tarefa"
 }
 
-# arrumar depois
 ###
-DELETE http://localhost:3000/api/tarefas/8
+DELETE http://localhost:3000/api/tarefas/1
+
+###
+PATCH http://localhost:3000/api/tarefas/9
+Content-Type: application/json
+
+{
+  "estaCompleta": false
+}
