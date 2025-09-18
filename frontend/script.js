@@ -28,3 +28,22 @@ function criarNovoElementoDeTarefa(textoTarefa) {
     return itemDaLista;
 }
 
+// Evento para adicionar uma nova tarefa
+botaoAdicionar.addEventListener('click', () => {
+    const textoTarefa = campoNovaTarefa.value.trim();
+    if (textoTarefa !== '') {
+        const novaTarefa = criarNovoElementoDeTarefa(textoTarefa);
+        listaDeTarefas.appendChild(novaTarefa);
+        campoNovaTarefa.value = ''; // Limpa o campo de texto
+    }
+});
+
+// Evento para marcar/desmarcar a tarefa como completa
+listaDeTarefas.addEventListener('click', (evento) => {
+    const alvo = evento.target;
+    // Verifica se o clique foi no círculo
+    if (alvo.classList.contains('checkbox-circle')) {
+        alvo.classList.toggle('completed');
+        alvo.nextElementSibling.classList.toggle('completed');
+    }
+});
