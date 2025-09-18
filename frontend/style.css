@@ -135,3 +135,9 @@ p {
     color: #87af87;
 }
 
+.trash-icon {
+    font-size: 2em;
+    margin-left: auto;
+    cursor: pointer;
+    color: #4b4b4b;
+}
