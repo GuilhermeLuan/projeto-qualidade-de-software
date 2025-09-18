@@ -58,3 +58,48 @@ p {
     padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
 }
+
+#novaTarefa {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#botaoAdicionar {
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#listaDeTarefas {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#listaDeTarefas li {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#listaDeTarefas li:last-child {
+    border-bottom: none;
+}
+
+#listaDeTarefas li span {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 1em;
+}
