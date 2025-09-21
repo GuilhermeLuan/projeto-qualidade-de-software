@@ -13,25 +13,25 @@ export class TarefaService {
         return await TarefaRepository.find();
     }
 
-    async deletarTarefa(id, res) {
+    async deletarTarefa(id) {
         // lógica para deletar tarefa
-        await this.verificarTarefa(id, res);
+        await this.verificarTarefa(id);
         return await TarefaRepository.delete({id});
     }
 
     //método para verificar se a tarefa existe
-    async verificarTarefa(id, res) {
+    async verificarTarefa(id) {
         // lógica para verificar tarefa
         const tarefa = await TarefaRepository.findOneBy({id})
         if (!tarefa) {
-            return res.status(404).json({message: "Tarefa inexistente."})
+            throw new Error("Tarefa inexistente.");
         }
         return tarefa;
     }
 
-    async atualizarStatusTarefa(id, estaCompleta, res) {
+    async atualizarStatusTarefa(id, estaCompleta) {
         // lógica para atualizar o status da tarefa
-        await this.verificarTarefa(id, res);
+        await this.verificarTarefa(id);
         return await TarefaRepository.update({id: id}, {estaCompleta: estaCompleta});
     }
 }
