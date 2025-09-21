@@ -1,5 +1,5 @@
 import {TarefaRepository} from "../repositories/Tarefa.repository.js";
-import {NotFoundError} from "../exceptions/NotFound.execption.js";
+import {NotFoundError} from "../exceptions/NotFound.exeception.js";
 
 export class TarefaService {
 

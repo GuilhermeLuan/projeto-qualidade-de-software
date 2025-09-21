@@ -26,7 +26,7 @@ router.post("/tarefas", async (req, res) => {
 router.delete("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     try {
-        await tarefaService.deletarTarefa(id, res);
+        await tarefaService.deletarTarefa(id);
         res.status(204).json();
 
         console.log("Tarefa apagada com sucesso!")
@@ -44,12 +44,12 @@ router.delete("/tarefas/:id", async (req, res) => {
 router.patch("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     try {
-        await tarefaService.atualizarStatusTarefa(id, req.body.estaCompleta, res);
+        await tarefaService.atualizarStatusTarefa(id, req.body.estaCompleta);
         res.status(204).json();
     } catch (error) {
         const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
         return res.status(status).json({
-            message: error.message || "Erro ocorreu ao deletar a tarefa."
+            message: error.message || "Erro ocorreu ao atualizar a tarefa."
         });
     }
 
@@ -65,7 +65,7 @@ router.get("/tarefas", async (req, res) => {
     } catch (error) {
         const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
         return res.status(status).json({
-            message: error.message || "Erro ocorreu ao deletar a tarefa."
+            message: error.message || "Erro ocorreu ao listar as tarefas."
         });
     }
 })
