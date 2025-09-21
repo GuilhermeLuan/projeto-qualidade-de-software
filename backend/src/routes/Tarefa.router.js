@@ -10,10 +10,10 @@ router.post("/tarefas", async (req, res) => {
     try {
         const {titulo, descricao} = req.body;
         const estaCompleta = false;
-        const tarefaRepository = AppDataSource.getRepository(Tarefa);
-        const tarefa = tarefaRepository.create({titulo, descricao, estaCompleta});
+        // const tarefaRepository = AppDataSource.getRepository(Tarefa);
+        const tarefa = TarefaRepository.create({titulo, descricao, estaCompleta});
 
-        const tarefaSalva = await tarefaRepository.save(tarefa);
+        const tarefaSalva = await TarefaRepository.save(tarefa);
         res.status(201).json(tarefa);
     } catch (error) {
         console.error("Erro ocorreu ao adicionar a tarefa.", error)
