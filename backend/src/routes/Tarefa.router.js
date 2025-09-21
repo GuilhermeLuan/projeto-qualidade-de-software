@@ -13,8 +13,10 @@ router.post("/tarefas", async (req, res) => {
 
         res.status(201).json(tarefaSalva);
     } catch (error) {
-        console.error("Erro ocorreu ao adicionar a tarefa.", error)
-        res.status(500).json({message: "Erro ocorreu ao adicionar a tarefa."})
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao deletar a tarefa."
+        });
     }
 
     console.log("Tarefa criada com sucesso!")
@@ -30,7 +32,10 @@ router.delete("/tarefas/:id", async (req, res) => {
         console.log("Tarefa apagada com sucesso!")
     } catch (error) {
         console.error("Erro ocorreu ao deletar a tarefa.", error)
-        res.status(500).json({message: "Erro ocorreu ao deletar a tarefa."})
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao deletar a tarefa."
+        });
     }
 })
 
@@ -42,8 +47,10 @@ router.patch("/tarefas/:id", async (req, res) => {
         await tarefaService.atualizarStatusTarefa(id, req.body.estaCompleta, res);
         res.status(204).json();
     } catch (error) {
-        console.error("Erro ocorreu ao atualizar a tarefa.", error)
-        res.status(500).json({message: "Erro ocorreu ao atualizar a tarefa."})
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao deletar a tarefa."
+        });
     }
 
     console.log("Tarefa marcada/desmarcada com sucesso!")
@@ -56,8 +63,10 @@ router.get("/tarefas", async (req, res) => {
         const listaTarefas = await tarefaService.listarTarefas();
         res.status(200).json(listaTarefas)
     } catch (error) {
-        console.error("Erro ocorreu ao listar as tarefas.", error)
-        res.status(500).json({message: "Erro ocorreu ao listar as tarefas."})
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao deletar a tarefa."
+        });
     }
 })
 

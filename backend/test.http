@@ -7,10 +7,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/tarefas/1
+DELETE http://localhost:3000/api/tarefas/4
 
 ###
-PATCH http://localhost:3000/api/tarefas/2
+PATCH http://localhost:3000/api/tarefas/3
 Content-Type: application/json
 
 {

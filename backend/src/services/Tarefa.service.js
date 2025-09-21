@@ -1,4 +1,5 @@
 import {TarefaRepository} from "../repositories/Tarefa.repository.js";
+import {NotFoundError} from "../exceptions/NotFound.execption.js";
 
 export class TarefaService {
 
@@ -24,7 +25,8 @@ export class TarefaService {
         // lógica para verificar tarefa
         const tarefa = await TarefaRepository.findOneBy({id})
         if (!tarefa) {
-            throw new Error("Tarefa inexistente.");
+            console.log("Tarefa inexistente.");
+            throw new NotFoundError("Tarefa inexistente.");
         }
         return tarefa;
     }
