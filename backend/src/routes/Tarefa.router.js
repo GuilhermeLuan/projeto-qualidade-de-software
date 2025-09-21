@@ -1,7 +1,4 @@
-import { AppDataSource } from "../data-source.js";
-import { Tarefa } from "../entities/Tarefa.entity.js";
 import Router from "express"
-import {TarefaRepository} from "../repositories/Tarefa.repository.js";
 import {TarefaService} from "../services/Tarefa.service.js";
 
 //criando as rotas
@@ -17,7 +14,7 @@ router.post("/tarefas", async (req, res) => {
         res.status(201).json(tarefaSalva);
     } catch (error) {
         console.error("Erro ocorreu ao adicionar a tarefa.", error)
-        res.status(500).json({ message: "Erro ocorreu ao adicionar a tarefa." })
+        res.status(500).json({message: "Erro ocorreu ao adicionar a tarefa."})
     }
 
     console.log("Tarefa criada com sucesso!")
@@ -27,22 +24,13 @@ router.post("/tarefas", async (req, res) => {
 router.delete("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     try {
-        // const tarefaRepository = AppDataSource.getRepository(Tarefa);
-        // const tarefaParaDel = await tarefaRepository.findOneBy({ id: id })
-        // if (!tarefaParaDel) {
-        //     res.status(404).json({ message: "Tarefa inexistente." })
-        // }
-
-        // await tarefaRepository.delete({
-        //     id: id
-        // })
-        tarefaService.deletarTarefa(id, res);
+        await tarefaService.deletarTarefa(id, res);
         res.status(204).json();
-        
+
         console.log("Tarefa apagada com sucesso!")
     } catch (error) {
         console.error("Erro ocorreu ao deletar a tarefa.", error)
-        res.status(500).json({ message: "Erro ocorreu ao deletar a tarefa." })
+        res.status(500).json({message: "Erro ocorreu ao deletar a tarefa."})
     }
 })
 
@@ -51,17 +39,11 @@ router.delete("/tarefas/:id", async (req, res) => {
 router.patch("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     try {
-        // const tarefaRepository = AppDataSource.getRepository(Tarefa);
-        // const estaCompleta = req.body.estaCompleta;
-        // await tarefaRepository.update(
-        //     { id: id },
-        //     { estaCompleta: estaCompleta }
-        // ); 
-        tarefaService.atualizarStatusTarefa(id, req.body.estaCompleta, res);
+        await tarefaService.atualizarStatusTarefa(id, req.body.estaCompleta, res);
         res.status(204).json();
     } catch (error) {
         console.error("Erro ocorreu ao atualizar a tarefa.", error)
-        res.status(500).json({ message: "Erro ocorreu ao atualizar a tarefa." })
+        res.status(500).json({message: "Erro ocorreu ao atualizar a tarefa."})
     }
 
     console.log("Tarefa marcada/desmarcada com sucesso!")
@@ -75,7 +57,7 @@ router.get("/tarefas", async (req, res) => {
         res.status(200).json(listaTarefas)
     } catch (error) {
         console.error("Erro ocorreu ao listar as tarefas.", error)
-        res.status(500).json({ message: "Erro ocorreu ao listar as tarefas." })
+        res.status(500).json({message: "Erro ocorreu ao listar as tarefas."})
     }
 })
 
