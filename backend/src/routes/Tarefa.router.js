@@ -1,20 +1,20 @@
 import { AppDataSource } from "../data-source.js";
 import { Tarefa } from "../entities/Tarefa.entity.js";
 import Router from "express"
+import {TarefaRepository} from "../repositories/Tarefa.repository.js";
+import {TarefaService} from "../services/Tarefa.service.js";
 
 //criando as rotas
 const router = Router();
+const tarefaService = new TarefaService();
 
 // Tratar possibilidade de upar dados vazios
 router.post("/tarefas", async (req, res) => {
     try {
         const {titulo, descricao} = req.body;
-        const estaCompleta = false;
-        // const tarefaRepository = AppDataSource.getRepository(Tarefa);
-        const tarefa = TarefaRepository.create({titulo, descricao, estaCompleta});
+        const tarefaSalva = await tarefaService.criarTarefa(titulo, descricao);
 
-        const tarefaSalva = await TarefaRepository.save(tarefa);
-        res.status(201).json(tarefa);
+        res.status(201).json(tarefaSalva);
     } catch (error) {
         console.error("Erro ocorreu ao adicionar a tarefa.", error)
         res.status(500).json({ message: "Erro ocorreu ao adicionar a tarefa." })
@@ -69,8 +69,7 @@ router.patch("/tarefas/:id", async (req, res) => {
 // Tentar retornar uma mensagem padrão de "Vazio" em caso de nenhuma tarefa existir no banco
 router.get("/tarefas", async (req, res) => {
     try {
-        const tarefaRepository = AppDataSource.getRepository(Tarefa);
-        const listaTarefas = await tarefaRepository.find()
+        const listaTarefas = await tarefaService.listarTarefas();
         res.status(200).json(listaTarefas)
     } catch (error) {
         console.error("Erro ocorreu ao listar as tarefas.", error)
