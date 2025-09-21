@@ -27,15 +27,16 @@ router.post("/tarefas", async (req, res) => {
 router.delete("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     try {
-        const tarefaRepository = AppDataSource.getRepository(Tarefa);
-        const tarefaParaDel = await tarefaRepository.findOneBy({ id: id })
-        if (!tarefaParaDel) {
-            res.status(404).json({ message: "Tarefa inexistente." })
-        }
+        // const tarefaRepository = AppDataSource.getRepository(Tarefa);
+        // const tarefaParaDel = await tarefaRepository.findOneBy({ id: id })
+        // if (!tarefaParaDel) {
+        //     res.status(404).json({ message: "Tarefa inexistente." })
+        // }
 
-        await tarefaRepository.delete({
-            id: id
-        })
+        // await tarefaRepository.delete({
+        //     id: id
+        // })
+        tarefaService.deletarTarefa(id, res);
         res.status(204).json();
         
         console.log("Tarefa apagada com sucesso!")
@@ -50,12 +51,13 @@ router.delete("/tarefas/:id", async (req, res) => {
 router.patch("/tarefas/:id", async (req, res) => {
     const id = req.params.id;
     try {
-        const tarefaRepository = AppDataSource.getRepository(Tarefa);
-        const estaCompleta = req.body.estaCompleta;
-        await tarefaRepository.update(
-            { id: id },
-            { estaCompleta: estaCompleta }
-        ); 
+        // const tarefaRepository = AppDataSource.getRepository(Tarefa);
+        // const estaCompleta = req.body.estaCompleta;
+        // await tarefaRepository.update(
+        //     { id: id },
+        //     { estaCompleta: estaCompleta }
+        // ); 
+        tarefaService.atualizarStatusTarefa(id, req.body.estaCompleta, res);
         res.status(204).json();
     } catch (error) {
         console.error("Erro ocorreu ao atualizar a tarefa.", error)
