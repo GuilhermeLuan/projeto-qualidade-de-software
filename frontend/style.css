@@ -1,6 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #F8F9FA;
     margin: 0;
     padding: 20px;
     display: flex;
@@ -15,7 +15,7 @@ main {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
 }
 
 header {
@@ -70,7 +70,7 @@ p {
 #botaoAdicionar {
     width: 40px;
     height: 40px;
-    background-color: #007bff;
+    background-color: #3B71CA;
     color: white;
     border: none;
     border-radius: 50%;
