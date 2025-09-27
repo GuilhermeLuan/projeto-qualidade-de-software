@@ -157,3 +157,20 @@ p {
   align-items: center;
   z-index: 1000; /* Garante que fique na frente de tudo */
 }
+
+/* A caixa do pop-up */
+.popup-box {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 350px; /* Largura máxima para não ficar gigante em telas grandes */
+}
+
+.popup-box p {
+  margin: 0 0 20px 0; /* Espaçamento abaixo do texto */
+  font-size: 1.1em;
+  color: #333;
+}
