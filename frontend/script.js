@@ -38,6 +38,63 @@ botaoAdicionar.addEventListener('click', () => {
     }
 });
 
+// // Evento para interagir com as tarefas na lista
+// listaDeTarefas.addEventListener('click', (evento) => {
+//   const alvo = evento.target; // O elemento exato que foi clicado
+
+//   // Verifica se o clique foi no círculo para marcar/desmarcar
+//   if (alvo.classList.contains('checkbox-circle')) {
+//     alvo.classList.toggle('completed');
+//   } 
+//   // Verifica se o clique foi no ícone da lixeira para remover
+//   else if (alvo.classList.contains('trash-icon')) {
+//     // Pega o elemento "pai" do ícone, que é o <li> da tarefa
+//     const tarefaParaRemover = alvo.parentElement;
+
+//     // Remove o elemento <li> da lista
+//     tarefaParaRemover.remove();
+//   }
+// });
+
+// Função para mostrar o pop-up de confirmação
+function mostrarPopupConfirmacao(callback) {
+  // Cria o fundo escurecido (overlay)
+  const overlay = document.createElement('div');
+  overlay.className = 'popup-overlay';
+
+  // Cria a caixa do pop-up
+  const popupBox = document.createElement('div');
+  popupBox.className = 'popup-box';
+
+  // Adiciona o texto e os botões dentro da caixa
+  popupBox.innerHTML = `
+    <p>Deseja realmente apagar esta tarefa?</p>
+    <button id="popup-btn-sim">Sim</button>
+    <button id="popup-btn-nao">Não</button>
+  `;
+
+  // Coloca a caixa dentro do overlay
+  overlay.appendChild(popupBox);
+  // Adiciona tudo na página
+  document.body.appendChild(overlay);
+
+  // Função para remover o pop-up da tela
+  const fecharPopup = () => document.body.removeChild(overlay);
+
+  // O que acontece ao clicar em "Sim"
+  document.getElementById('popup-btn-sim').addEventListener('click', () => {
+    callback(true); // Executa a função de apagar
+    fecharPopup();
+  });
+
+  // O que acontece ao clicar em "Não"
+  document.getElementById('popup-btn-nao').addEventListener('click', () => {
+    callback(false); // Não faz nada
+    fecharPopup();
+  });
+}
+
+
 // Evento para interagir com as tarefas na lista
 listaDeTarefas.addEventListener('click', (evento) => {
   const alvo = evento.target; // O elemento exato que foi clicado
@@ -48,10 +105,16 @@ listaDeTarefas.addEventListener('click', (evento) => {
   } 
   // Verifica se o clique foi no ícone da lixeira para remover
   else if (alvo.classList.contains('trash-icon')) {
-    // Pega o elemento "pai" do ícone, que é o <li> da tarefa
     const tarefaParaRemover = alvo.parentElement;
-
-    // Remove o elemento <li> da lista
-    tarefaParaRemover.remove();
+    
+    // Chama o pop-up em vez de remover diretamente
+    mostrarPopupConfirmacao((confirmado) => {
+      // Esta parte do código só roda DEPOIS que o usuário clica em "Sim" ou "Não"
+      if (confirmado) {
+        // Se o usuário clicou "Sim", remove a tarefa
+        tarefaParaRemover.remove();
+        // AQUI, no futuro, você também chamaria a função para deletar do back-end
+      }
+    });
   }
 });
