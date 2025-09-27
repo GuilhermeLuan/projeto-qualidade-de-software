@@ -24,12 +24,20 @@ header {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 2.5em;
+    letter-spacing: -1px; 
     color: #333;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/*Subtitulo*/
+header p {
+    color: #6C757D; 
+    font-size: 1.1em;
+    margin-top: 10px;
 }
 
 h1 strong {
@@ -70,7 +78,7 @@ p {
 #botaoAdicionar {
     width: 40px;
     height: 40px;
-    background-color: #3B71CA;
+    background-color: #9747FF;
     color: white;
     border: none;
     border-radius: 50%;
@@ -79,6 +87,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 #listaDeTarefas {
@@ -133,6 +142,7 @@ p {
 
 .task-text.completed {
     color: #87af87;
+    text-decoration: line-through;
 }
 
 .trash-icon {
