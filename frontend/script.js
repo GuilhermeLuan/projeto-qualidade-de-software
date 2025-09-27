@@ -38,12 +38,20 @@ botaoAdicionar.addEventListener('click', () => {
     }
 });
 
-// Evento para marcar/desmarcar a tarefa como completa
+// Evento para interagir com as tarefas na lista
 listaDeTarefas.addEventListener('click', (evento) => {
-    const alvo = evento.target;
-    // Verifica se o clique foi no círculo
-    if (alvo.classList.contains('checkbox-circle')) {
-        alvo.classList.toggle('completed');
-        alvo.nextElementSibling.classList.toggle('completed');
-    }
+  const alvo = evento.target; // O elemento exato que foi clicado
+
+  // Verifica se o clique foi no círculo para marcar/desmarcar
+  if (alvo.classList.contains('checkbox-circle')) {
+    alvo.classList.toggle('completed');
+  } 
+  // Verifica se o clique foi no ícone da lixeira para remover
+  else if (alvo.classList.contains('trash-icon')) {
+    // Pega o elemento "pai" do ícone, que é o <li> da tarefa
+    const tarefaParaRemover = alvo.parentElement;
+
+    // Remove o elemento <li> da lista
+    tarefaParaRemover.remove();
+  }
 });
