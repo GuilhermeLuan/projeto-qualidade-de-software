@@ -10,7 +10,7 @@ function criarNovoElementoDeTarefa(textoTarefa) {
     const circuloDoCheckbox = document.createElement('div');
     circuloDoCheckbox.classList.add('checkbox-circle');
 
-        // Cria o texto da tarefa
+    // Cria o texto da tarefa
     const spanTarefa = document.createElement('span');
     spanTarefa.classList.add('task-text');
     spanTarefa.innerText = textoTarefa;
