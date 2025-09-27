@@ -20,7 +20,7 @@ Este projeto foi implementado usando as seguintes tecnologias:
 ### Funcionalidades Backend: 
 O backend, desenvolvido em **Node.js** com **TypeScript**, é responsável pela persistência e manipulação dos dados:
 
-- **CRUD de Tarefas:** Implementa a lógica completa para Criar, Ler e Deletar tarefas.
+- **CRUD de Tarefas:** Implementa a lógica para Criar, Ler e Deletar tarefas.
 - **Gerenciamento de Status:** Controla o status de conclusão de cada tarefa (pendente/concluída).
 - **Validação de Dados:** Garante a integridade dos dados antes de salvar no banco de dados.
 
@@ -36,3 +36,9 @@ A interface de usuário, focada na interação do usuário:
 ## ✅ Características de qualidade aplicadas
 ## 🚀 Instruções de instalação/execução
 ## 👩‍💻🧑‍💻 Integrantes e funções
+- **Guilherme Basilio:** Frontend e Design
+- **Guilherme Luan:** Backend e Líder do grupo
+- **Kesia Viana:** Frontend
+- **Larissa Kailane:** Backend
+- **Luciana Liebl:** Frontend
+- **Luís Felipe Medrado:** Frontend
