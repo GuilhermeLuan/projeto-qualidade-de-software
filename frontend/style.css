@@ -141,3 +141,19 @@ p {
     cursor: pointer;
     color: #4b4b4b;
 }
+
+/* --- Estilos para o Pop-up de Confirmação --- */
+
+/* Fundo escurecido que cobre a tela inteira */
+.popup-overlay {
+  position: fixed; /* Fica fixo na tela mesmo com rolagem */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Cor preta com 60% de transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que fique na frente de tudo */
+}
