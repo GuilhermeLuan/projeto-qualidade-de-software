@@ -189,3 +189,15 @@ p {
 .popup-box button:hover {
     transform: scale(1.05);
 }
+
+/* Botão de confirmação (Sim) */
+#popup-btn-sim {
+  background-color: #28a745; /* Verde */
+  color: white;
+}
+
+/* Botão de cancelamento (Não) */
+#popup-btn-nao {
+  background-color: #dc3545; /* Vermelho */
+  color: white;
+}
