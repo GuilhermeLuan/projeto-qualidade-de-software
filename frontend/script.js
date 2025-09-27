@@ -30,10 +30,11 @@ function criarNovoElementoDeTarefa(textoTarefa) {
 
 // Evento para adicionar uma nova tarefa
 botaoAdicionar.addEventListener('click', () => {
+    //Pega o texto digitado no campo, se não estiver vazio chama a funçao criar elemento
     const textoTarefa = campoNovaTarefa.value.trim();
     if (textoTarefa !== '') {
-        const novaTarefa = criarNovoElementoDeTarefa(textoTarefa);
-        listaDeTarefas.appendChild(novaTarefa);
+        const novaTarefa = criarNovoElementoDeTarefa(textoTarefa); 
+        listaDeTarefas.appendChild(novaTarefa); //adiciona o item na lista
         campoNovaTarefa.value = ''; // Limpa o campo de texto
     }
 });
