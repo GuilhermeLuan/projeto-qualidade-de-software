@@ -1,0 +1,143 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 600px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 strong {
+    font-weight: 900;
+}
+
+.checkmark-icon {
+    font-size: 1.2em;
+    margin-right: 5px;
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+.normal-weight {
+    font-weight: 400;
+}
+
+p {
+    color: #888;
+    margin: 5px 0 0;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+#novaTarefa {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#botaoAdicionar {
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#listaDeTarefas {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#listaDeTarefas li {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#listaDeTarefas li:last-child {
+    border-bottom: none;
+}
+
+#listaDeTarefas li span {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 1em;
+}
+
+.checkbox-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.checkbox-circle.completed {
+    background-color: #3da86a;
+    border-color: #558151;
+}
+
+
+.checkbox-circle.completed::after {
+    content: '✓';
+    color: white;
+    font-size: 0.8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.task-text.completed {
+    color: #87af87;
+}
+
+.trash-icon {
+    font-size: 2em;
+    margin-left: auto;
+    cursor: pointer;
+    color: #4b4b4b;
+}
