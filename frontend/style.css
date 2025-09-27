@@ -174,3 +174,18 @@ p {
   font-size: 1.1em;
   color: #333;
 }
+
+/* Botões dentro do pop-up */
+.popup-box button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 10px;
+  transition: transform 0.2s;
+}
+
+.popup-box button:hover {
+    transform: scale(1.05);
+}
