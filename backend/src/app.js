@@ -7,7 +7,7 @@ AppDataSource.initialize()
     .then(() => {
         console.log("Inicializando o banco;)")
         const App = express();
-        App.use(cors);
+        App.use(cors());
         App.use(express.json());
         App.use("/api", tarefas)
         App.listen(3000, () => {

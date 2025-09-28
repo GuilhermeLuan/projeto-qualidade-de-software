@@ -2,6 +2,25 @@ const botaoAdicionar = document.getElementById('botaoAdicionar');
 const campoNovaTarefa = document.getElementById('novaTarefa');
 const listaDeTarefas = document.getElementById('listaDeTarefas');
 
+async function carregarTarefas() {
+    try {
+        const response = await fetch('http://localhost:3000/api/tarefas');
+        if (response.ok) {
+            const tarefas = await response.json();
+            listaDeTarefas.innerHTML = '';
+            tarefas.forEach(tarefa => {
+                const item = criarNovoElementoDeTarefa(tarefa.titulo);
+                listaDeTarefas.appendChild(item);
+            });
+        } else {
+            console.error('Erro ao carregar tarefas:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erro de conexão ao carregar tarefas:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', carregarTarefas);
 
 function criarNovoElementoDeTarefa(textoTarefa) {
     const itemDaLista = document.createElement('li');
