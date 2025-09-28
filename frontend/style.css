@@ -1,6 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #F8F9FA;
     margin: 0;
     padding: 20px;
     display: flex;
@@ -15,7 +15,7 @@ main {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
 }
 
 header {
@@ -24,12 +24,20 @@ header {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 2.5em;
+    letter-spacing: -1px; 
     color: #333;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/*Subtitulo*/
+header p {
+    color: #6C757D; 
+    font-size: 1.1em;
+    margin-top: 10px;
 }
 
 h1 strong {
@@ -39,7 +47,7 @@ h1 strong {
 .checkmark-icon {
     font-size: 1.2em;
     margin-right: 5px;
-    color: #4CAF50;
+    color: #007ACC;
     font-weight: 700;
 }
 
@@ -70,7 +78,7 @@ p {
 #botaoAdicionar {
     width: 40px;
     height: 40px;
-    background-color: #007bff;
+    background-color: #007ACC;
     color: white;
     border: none;
     border-radius: 50%;
@@ -79,6 +87,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 #listaDeTarefas {
@@ -115,8 +124,8 @@ p {
 }
 
 .checkbox-circle.completed {
-    background-color: #3da86a;
-    border-color: #558151;
+    background-color: #007ACC;
+    border-color: #007ACC; 
 }
 
 
@@ -132,7 +141,8 @@ p {
 
 
 .task-text.completed {
-    color: #87af87;
+    color: #6c757d;
+    text-decoration: line-through;
 }
 
 .trash-icon {
