@@ -40,12 +40,18 @@ A interface de usuário, focada na interação do usuário:
 Para garantir a qualidade da aplicação, focamos nas seguintes características de qualidades estabelecidas na ISO/IEC 25010:
 **1.Funcionalidade (atender aos requisitos).**
 Por meio do sistema de gerenciamento de tarefas o usuário  consegue de forma consistente Adicionar, Marcar como concluídas, Remover uma tarefa, bem como Visualizar sua lista de tarefas. Dessa forma, a aplicação atende aos requisitos de :
-- Adequação reconhecível: aplicação é apropriada para atender as necessidades de gerenciamento de tarefas.
-- Capacidade de aprendizado: o sistema é fácil e simples  de aprender como o utiliza.
-- Operabilidade: o produto possui atributos UX/UI que facilitam seu uso e controle.
-- Proteção de erro do usuário: com uma interface simples a aplicação é capaz proteger o usuário de erros de uso na aplicação.
+- Adequação reconhecível: aplicação é apropriada para atender as necessidades de gerenciamento de tarefas, pois o usuário consegue: 
+-- digitar no campo a tarefa que tem a fazer;
+-- adicionar a tarefa por meio do botão adicionar grande em destaque; 
+-- visualizar suas tarefas já concluídas e as que ainda não foram concluídas;
+-- marcar a bolinha da tarefa que foi concluída, mudando a cor da bolinha para azul e riscando as palavras da atividade
+-- excluir uma atividade da lista, pressionando o ícone da lixeira.
+- Capacidade de aprendizado: o sistema é fácil e simples  de aprender como o utiliza, pois tem apenas uma campo para digitação da tarefa, possui um botão grande em destaque para adionar a tarefa, um campo em forma de cículo vazio para a pessoa selecioná-lo quando concluir a atividade e um ícone de lixeira para indicar onde o usuário deve excluir a tarefa. Dessa forma, usando ícones e cores que o usuário já está habituado é fácil aprender a usar o produto. 
+- Operabilidade: o produto possui atributos UX/UI que facilitam seu uso e controle, como o uso de ícones que indicam alguma ação para o suário, cores para destacar, fontes grandes e tipografia simples,
+- Proteção de erro do usuário: com uma interface simples e bem intuitiva a aplicação é capaz proteger o usuário de erros de uso na aplicação.
 - Estética da interface de usuário: usando os princípios de UX/UI foi construída uma interface agradável, simples e intuitiva.
-- Acessibilidade: o produto, por ser uma aplicação web,pode ser utilizado por várias pessoas com características e capacidades diversas.
+- Acessibilidade: o produto pode ser utilizado por várias pessoas com características e capacidades diversas, como por exemplo pessoas com daltonismo, pois a aplicação usa cores seguras para daltônicos, além de de tipografia e fontes grandes.
+
 **2.Confiabilidade (tratamento de erros, validações).**
 
 **3.Usabilidade (facilidade de uso, acessibilidade).**
