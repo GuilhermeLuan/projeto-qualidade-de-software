@@ -29,13 +29,40 @@ function criarNovoElementoDeTarefa(textoTarefa) {
 }
 
 // Evento para adicionar uma nova tarefa
-botaoAdicionar.addEventListener('click', () => {
-    //Pega o texto digitado no campo, se não estiver vazio chama a funçao criar elemento
+botaoAdicionar.addEventListener('click', async () => {
     const textoTarefa = campoNovaTarefa.value.trim();
     if (textoTarefa !== '') {
-        const novaTarefa = criarNovoElementoDeTarefa(textoTarefa); 
-        listaDeTarefas.appendChild(novaTarefa); //adiciona o item na lista
-        campoNovaTarefa.value = ''; // Limpa o campo de texto
+        try {
+            // Faz a requisição para o backend
+            const response = await fetch('http://localhost:3000/tarefas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    titulo: textoTarefa,
+                    descricao: '' // ou você pode adicionar um campo para descrição
+                })
+            });
+
+            if (response.ok) {
+                const tarefaSalva = await response.json();
+                
+                // Cria o elemento visual com a tarefa salva
+                const novaTarefa = criarNovoElementoDeTarefa(tarefaSalva.titulo);
+                listaDeTarefas.appendChild(novaTarefa);
+                campoNovaTarefa.value = '';
+                
+                console.log('Tarefa salva com sucesso!');
+            } else {
+                const errorData = await response.json();
+                console.error('Erro ao salvar tarefa:', errorData.message);
+                alert('Erro ao salvar a tarefa: ' + errorData.message);
+            }
+        } catch (error) {
+            console.error('Erro de conexão:', error);
+            alert('Erro de conexão com o servidor');
+        }
     }
 });
 
