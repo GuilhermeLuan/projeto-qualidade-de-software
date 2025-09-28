@@ -9,7 +9,7 @@ async function carregarTarefas() {
             const tarefas = await response.json();
             listaDeTarefas.innerHTML = '';
             tarefas.forEach(tarefa => {
-                const item = criarNovoElementoDeTarefa(tarefa.titulo);
+                const item = criarNovoElementoDeTarefa(tarefa);
                 listaDeTarefas.appendChild(item);
             });
         } else {
@@ -22,8 +22,9 @@ async function carregarTarefas() {
 
 document.addEventListener('DOMContentLoaded', carregarTarefas);
 
-function criarNovoElementoDeTarefa(textoTarefa) {
+function criarNovoElementoDeTarefa(tarefa) {
     const itemDaLista = document.createElement('li');
+    itemDaLista.dataset.id = tarefa.id; // Armazena o ID da tarefa no elemento
 
   
     const circuloDoCheckbox = document.createElement('div');
@@ -32,7 +33,7 @@ function criarNovoElementoDeTarefa(textoTarefa) {
     // Cria o texto da tarefa
     const spanTarefa = document.createElement('span');
     spanTarefa.classList.add('task-text');
-    spanTarefa.innerText = textoTarefa;
+    spanTarefa.innerText = tarefa.titulo;
 
     // Cria o ícone da lixeira
     const iconeLixeira = document.createElement('div');
@@ -68,7 +69,7 @@ botaoAdicionar.addEventListener('click', async () => {
                 const tarefaSalva = await response.json();
                 
                 // Cria o elemento visual com a tarefa salva
-                const novaTarefa = criarNovoElementoDeTarefa(tarefaSalva.titulo);
+                const novaTarefa = criarNovoElementoDeTarefa(tarefaSalva);
                 listaDeTarefas.appendChild(novaTarefa);
                 campoNovaTarefa.value = '';
                 
@@ -135,14 +136,30 @@ listaDeTarefas.addEventListener('click', (evento) => {
   // Verifica se o clique foi no ícone da lixeira para remover
   else if (alvo.classList.contains('trash-icon')) {
     const tarefaParaRemover = alvo.parentElement;
-    
+    const idDaTarefa = tarefaParaRemover.dataset.id; // Pega o ID da tarefa
+
     // Chama o pop-up em vez de remover diretamente
-    mostrarPopupConfirmacao((confirmado) => {
+    mostrarPopupConfirmacao(async (confirmado) => {
       // Esta parte do código só roda DEPOIS que o usuário clica em "Sim" ou "Não"
       if (confirmado) {
-        // Se o usuário clicou "Sim", remove a tarefa
-        tarefaParaRemover.remove();
-        // AQUI, no futuro, você também chamaria a função para deletar do back-end
+        try {
+            const response = await fetch(`http://localhost:3000/api/tarefas/${idDaTarefa}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                // Se o usuário clicou "Sim" e a API confirmou, remove a tarefa da tela
+                tarefaParaRemover.remove();
+                console.log('Tarefa removida com sucesso!');
+            } else {
+                const errorData = await response.json();
+                console.error('Erro ao remover tarefa:', errorData.message);
+                alert('Erro ao remover a tarefa: ' + errorData.message);
+            }
+        } catch (error) {
+            console.error('Erro de conexão ao remover tarefa:', error);
+            alert('Erro de conexão com o servidor');
+        }
       }
     });
   }

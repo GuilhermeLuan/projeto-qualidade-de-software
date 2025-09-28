@@ -4,9 +4,11 @@ import {NotFoundError} from "../exceptions/NotFound.exeception.js";
 export class TarefaService {
 
     async criarTarefa(titulo, descricao) {
-        const estaCompleta = false;
-        const tarefa = TarefaRepository.create({titulo, descricao, estaCompleta});
-        return await TarefaRepository.save(tarefa);
+        const tarefa = new Tarefa();
+        tarefa.titulo = titulo;
+        tarefa.descricao = descricao;
+        const tarefaSalva = await this.tarefaRepository.save(tarefa);
+        return tarefaSalva;
     }
 
     async listarTarefas() {
