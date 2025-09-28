@@ -34,7 +34,7 @@ botaoAdicionar.addEventListener('click', async () => {
     if (textoTarefa !== '') {
         try {
             // Faz a requisição para o backend
-            const response = await fetch('http://localhost:3000/tarefas', {
+            const response = await fetch('http://localhost:3000/api/tarefas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
