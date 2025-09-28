@@ -10,6 +10,10 @@ async function carregarTarefas() {
             listaDeTarefas.innerHTML = '';
             tarefas.forEach(tarefa => {
                 const item = criarNovoElementoDeTarefa(tarefa);
+                // Adiciona a classe 'completed' se a tarefa já estiver completa
+                if (tarefa.estaCompleta) {
+                    item.querySelector('.checkbox-circle').classList.add('completed');
+                }
                 listaDeTarefas.appendChild(item);
             });
         } else {
@@ -29,6 +33,11 @@ function criarNovoElementoDeTarefa(tarefa) {
   
     const circuloDoCheckbox = document.createElement('div');
     circuloDoCheckbox.classList.add('checkbox-circle');
+
+    // Se a tarefa estiver completa, adiciona a classe 'completed'
+    if (tarefa.estaCompleta) {
+        circuloDoCheckbox.classList.add('completed');
+    }
 
     // Cria o texto da tarefa
     const spanTarefa = document.createElement('span');
@@ -126,13 +135,38 @@ function mostrarPopupConfirmacao(callback) {
 
 
 // Evento para interagir com as tarefas na lista
-listaDeTarefas.addEventListener('click', (evento) => {
+listaDeTarefas.addEventListener('click', async (evento) => {
   const alvo = evento.target; // O elemento exato que foi clicado
 
   // Verifica se o clique foi no círculo para marcar/desmarcar
   if (alvo.classList.contains('checkbox-circle')) {
-    alvo.classList.toggle('completed');
-  } 
+    const tarefaItem = alvo.parentElement;
+    const idDaTarefa = tarefaItem.dataset.id;
+    const estaCompleta = !alvo.classList.contains('completed'); // O novo estado será o inverso do atual
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/tarefas/${idDaTarefa}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ estaCompleta })
+        });
+
+        if (response.ok) {
+            // Se a API confirmar, atualiza a aparência
+            alvo.classList.toggle('completed');
+            console.log('Status da tarefa atualizado com sucesso!');
+        } else {
+            const errorData = await response.json();
+            console.error('Erro ao atualizar status da tarefa:', errorData.message);
+            alert('Erro ao atualizar o status da tarefa: ' + errorData.message);
+        }
+    } catch (error) {
+        console.error('Erro de conexão ao atualizar status:', error);
+        alert('Erro de conexão com o servidor');
+    }
+  }
   // Verifica se o clique foi no ícone da lixeira para remover
   else if (alvo.classList.contains('trash-icon')) {
     const tarefaParaRemover = alvo.parentElement;

@@ -9,7 +9,6 @@ export class Tarefa {
     titulo!: string
     @Column()
     descricao!: string
-    @Column()
+    @Column({default: false})
     estaCompleta!: boolean
 }
-
