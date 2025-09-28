@@ -47,7 +47,7 @@ h1 strong {
 .checkmark-icon {
     font-size: 1.2em;
     margin-right: 5px;
-    color: #4CAF50;
+    color: #007ACC;
     font-weight: 700;
 }
 
@@ -78,7 +78,7 @@ p {
 #botaoAdicionar {
     width: 40px;
     height: 40px;
-    background-color: #9747FF;
+    background-color: #007ACC;
     color: white;
     border: none;
     border-radius: 50%;
@@ -124,8 +124,8 @@ p {
 }
 
 .checkbox-circle.completed {
-    background-color: #3da86a;
-    border-color: #558151;
+    background-color: #007ACC;
+    border-color: #007ACC; 
 }
 
 
