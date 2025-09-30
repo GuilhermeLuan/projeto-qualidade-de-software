@@ -59,17 +59,32 @@ Por meio do sistema de gerenciamento de tarefas o usuário  consegue de forma co
 **Acessibilidade:** o produto pode ser utilizado por várias pessoas com características e capacidades diversas, como por exemplo pessoas com daltonismo, pois a aplicação usa cores seguras para daltônicos, além de de tipografia e fontes grandes.
 
 ### 2.Confiabilidade (tratamento de erros, validações).
-A aplicação foi desenvolvida para ser confiável, garantindo que funcione de forma consistente e segura por meio de **tratamento de erros e validações**
+A aplicação foi desenvolvida para ser confiável, garantindo que funcione de forma consistente e segura por meio do **tratamento de erros e validações**. Isso foi alcançado da seguinte forma:
 
-- Maturidade: O sistema opera de forma estável. As interações entre o frontend em JavaScript e o backend em Node.js foram implementadas para evitar falhas inesperadas durante as operações-padrão, como adicionar ou remover tarefas.
+- Maturidade: O sistema opera de forma estável, sem falhas em seu fluxo principal. No backend, a lógica implementada com Node.js e TypeScript garante que as operações de criar, ler e deletar tarefas sejam processadas de forma atômica e previsível, evitando a corrupção de dados no banco SQLite.
 
-- Tolerância a Falhas: O backend, construído com Express.js, possui rotas bem definidas que isolam as operações. Uma falha ao excluir uma tarefa, por exemplo, não impede que o usuário continue a visualizar ou adicionar outras tarefas.
+- Tolerância a Falhas: A arquitetura do backend, construída com Express.js, isola cada funcionalidade em rotas de API distintas (ex: POST /tasks, DELETE /tasks/:id). Isso significa que uma falha inesperada ao tentar deletar uma tarefa específica não impede que o sistema continue funcionando para listar ou adicionar novas tarefas.
 
-- Recuperabilidade: Em caso de falha de conexão com o backend, o frontend está preparado para não travar, permitindo que o usuário possa recarregar a página para restabelecer a comunicação com o servidor assim que ele estiver disponível.
+- Recuperabilidade: O frontend lida com possíveis falhas de comunicação com o backend. As chamadas de API são estruturadas para que, em caso de erro de conexão, a aplicação não trave. Em vez disso, a operação falha de maneira controlada, permitindo ao usuário, por exemplo, recarregar a página para tentar novamente.
 
-- Validação de Entrada: Foi implementada uma validação no frontend para não permitir a adição de tarefas vazias, desabilitando o botão "Adicionar" quando o campo de texto está em branco. Isso previne a inserção de dados inúteis no banco de dados.
+- Validação de Entrada: Para prevenir a inserção de dados inválidos, a interface possui uma validação clara: o botão "Adicionar" fica desabilitado enquanto o campo de texto da tarefa está vazio. Isso força o usuário a inserir um conteúdo válido e protege o banco de dados contra entradas inúteis.
 
-**3.Usabilidade (facilidade de uso, acessibilidade).**
+### 3.Usabilidade (facilidade de uso, acessibilidade).
+A usabilidade foca na **facilidade de uso e acessibilidade**, garantindo uma experiência do usuário positiva. No projeto, isso é visível em:
+
+- Capacidade de Aprendizado: A interface é imediatamente compreensível. Isso é demonstrado pela presença de um único campo de texto e um botão de ação principal ("Adicionar"). O usuário não precisa de um tutorial para entender como realizar a principal função do sistema.
+
+- Operabilidade: O controle da aplicação é simples e direto. O fluxo de uso é claro (digitar -> clicar -> ver resultado) e os elementos interativos utilizam ícones universalmente reconhecidos:
+
+ - O ícone de lixeira indica claramente a ação de excluir.
+
+ - O círculo de marcação (checkbox) ao lado da tarefa é um padrão conhecido para indicar a conclusão de um item.
+
+- Proteção contra Erros do Usuário: Além da validação de entrada, o design minimalista protege o usuário de cometer erros. Com poucas opções na tela e ações bem definidas, reduzimos as chances de cliques acidentais ou operações indesejadas.
+
+- Estética da Interface: Foi criado um design limpo e organizado. O uso de espaçamento adequado, uma paleta de cores consistente e fontes de boa legibilidade resulta em uma interface que não é apenas funcional, mas também visualmente agradável.
+
+- Acessibilidade: O projeto considera a diversidade de usuários. A escolha de cores com bom contraste e fontes com tamanho legível foi intencional para garantir que pessoas com dificuldades de visão ou daltonismo possam utilizar a aplicação sem barreiras.
 
 **4.Eficiência (desempenho adequado).**
 
