@@ -119,15 +119,18 @@ Para rodar o projeto localmente, siga os passos abaixo:
 2. Entre na pasta que foi clonada:
    ```bash
      cd projeto-qualidade-de-software
-3.	**Instale as dependências**
+3. E na pasta backend:
+   ```bash
+     cd backend
+4.	**Instale as dependências**
     ```bash
     npm install
 
-4.	**Inicie o servidor de desenvolvimento**
+5.	**Inicie o servidor de desenvolvimento**
     ```bash
     npm run dev
 
-5.	**Acesse no navegador**
+6.	**Acesse no navegador**
 e abra http://localhost:3000 para visualizar o projeto.
 
 ## 👩‍💻🧑‍💻 Integrantes e funções
