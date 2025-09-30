@@ -115,19 +115,20 @@ Para rodar o projeto localmente, siga os passos abaixo:
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
-
-2.	**Instale as dependências**
-    ``bash
+   git clone https://github.com/GuilhermeLuan/projeto-qualidade-de-software.git
+2. Entre na pasta que foi clonada:
+   ```bash
+     cd projeto-qualidade-de-software
+3.	**Instale as dependências**
+    ```bash
     npm install
 
-3.	**Inicie o servidor de desenvolvimento**
+4.	**Inicie o servidor de desenvolvimento**
     ```bash
     npm run dev
 
-4.	**Acesse no navegador**
-Abra http://localhost:3000 para visualizar o projeto.
+5.	**Acesse no navegador**
+e abra http://localhost:3000 para visualizar o projeto.
 
 ## 👩‍💻🧑‍💻 Integrantes e funções
 - **Guilherme Basilio:** Frontend e Design
