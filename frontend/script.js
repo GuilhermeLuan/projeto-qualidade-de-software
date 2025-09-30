@@ -133,7 +133,6 @@ function mostrarPopupConfirmacao(callback) {
   });
 }
 
-
 // Evento para interagir com as tarefas na lista
 listaDeTarefas.addEventListener('click', async (evento) => {
   const alvo = evento.target; // O elemento exato que foi clicado
