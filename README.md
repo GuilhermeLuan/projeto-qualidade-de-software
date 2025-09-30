@@ -101,7 +101,24 @@ Para garantir um **desempenho adequado**, a aplicação foi projetada para ser r
 
 **A biblioteca TypeORM** ajuda a criar consultas otimizadas ao banco de dados, evitando o consumo desnecessário de memória e processamento no servidor.
 
-**5.Manutenibilidade (código limpo, modular).**
+### 5.Manutenibilidade (código limpo, modular).
+A estrutura do projeto foi pensada para facilitar futuras manutenções e evoluções, priorizando um 
+**código limpo e modular**. Os seguintes pontos demonstram isso:
+
+- Modularidade: A arquitetura do projeto possui uma **separação clara entre as responsabilidades do Frontend e do Backend**. Dentro do backend, a estrutura do Express.js foi utilizada para organizar o código em camadas, como rotas (a definição dos endpoints da API) e a lógica de manipulação dos dados, isolando as funcionalidades.
+
+- Clareza e Legibilidade: O uso de **TypeScript** no backend foi uma decisão estratégica para a qualidade do código. Ao adicionar tipagem estática, o código se torna mais legível, autodescritivo e menos propenso a erros, facilitando a compreensão por qualquer membro da equipe que precise trabalhar nele.
+
+- Modificabilidade: Graças à estrutura modular, a aplicação é facilmente modificável. Por exemplo, para adicionar um novo campo como "prioridade" a uma tarefa, o processo seria simples e localizado:
+
+1. Alterar a entidade da tarefa no TypeORM.
+
+2. Ajustar a rota da API no Express.js para receber o novo campo.
+
+3. Adicionar o elemento correspondente na interface HTML/JavaScript.
+Essas mudanças teriam baixo impacto no resto do sistema.
+
+- Organização do Repositório: O uso de branches no Git, conforme o fluxo de trabalho proposto no projeto (main para código estável, develop para integração e feature para novas funcionalidades), foi crucial para manter o código organizado e permitir que a equipe trabalhasse em paralelo sem conflitos, o que é um pilar da manutenibilidade em projetos colaborativos.
 
 ## 🚀 Instruções de instalação
 
