@@ -1,7 +1,11 @@
+import {Tarefa} from "../entities/Tarefa.entity.js";
 import {TarefaRepository} from "../repositories/Tarefa.repository.js";
 import {NotFoundError} from "../exceptions/NotFound.exeception.js";
 
 export class TarefaService {
+    constructor() {
+        this.tarefaRepository = TarefaRepository;
+    }
 
     async criarTarefa(titulo, descricao) {
         const tarefa = new Tarefa();
