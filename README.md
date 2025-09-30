@@ -76,9 +76,9 @@ A usabilidade foca na **facilidade de uso e acessibilidade**, garantindo uma exp
 
 - Operabilidade: O controle da aplicação é simples e direto. O fluxo de uso é claro (digitar -> clicar -> ver resultado) e os elementos interativos utilizam ícones universalmente reconhecidos:
 
- - O ícone de lixeira indica claramente a ação de excluir.
+**O ícone de lixeira** indica claramente a ação de excluir.
 
- - O círculo de marcação (checkbox) ao lado da tarefa é um padrão conhecido para indicar a conclusão de um item.
+**O círculo de marcação** (checkbox) ao lado da tarefa é um padrão conhecido para indicar a conclusão de um item.
 
 - Proteção contra Erros do Usuário: Além da validação de entrada, o design minimalista protege o usuário de cometer erros. Com poucas opções na tela e ações bem definidas, reduzimos as chances de cliques acidentais ou operações indesejadas.
 
@@ -86,7 +86,20 @@ A usabilidade foca na **facilidade de uso e acessibilidade**, garantindo uma exp
 
 - Acessibilidade: O projeto considera a diversidade de usuários. A escolha de cores com bom contraste e fontes com tamanho legível foi intencional para garantir que pessoas com dificuldades de visão ou daltonismo possam utilizar a aplicação sem barreiras.
 
-**4.Eficiência (desempenho adequado).**
+### 4.Eficiência (desempenho adequado).
+Para garantir um **desempenho adequado**, a aplicação foi projetada para ser rápida e responsiva, utilizando os recursos de forma otimizada. Isso se manifesta em:
+
+- Comportamento em Relação ao Tempo: A resposta da aplicação às ações do usuário, como adicionar ou marcar uma tarefa como concluída, é praticamente instantânea. Isso é obtido pela combinação de:
+
+**Frontend Leve:** O uso de HTML, CSS e JavaScript puros, sem frameworks pesados, garante que a interface carregue e responda rapidamente no navegador.
+
+**Backend Ágil:** O Node.js é conhecido por seu modelo de I/O não bloqueante, o que permite ao servidor processar as requisições de forma muito rápida e eficiente.
+
+- Utilização de Recursos: A aplicação foi desenvolvida para consumir o mínimo de recursos necessários.
+
+**No backend**, o uso do banco de dados SQLite é ideal para esta aplicação, pois ele é extremamente leve e rápido para operações de escrita e leitura de dados locais, sem a sobrecarga de um servidor de banco de dados separado.
+
+**A biblioteca TypeORM** ajuda a criar consultas otimizadas ao banco de dados, evitando o consumo desnecessário de memória e processamento no servidor.
 
 **5.Manutenibilidade (código limpo, modular).**
 
