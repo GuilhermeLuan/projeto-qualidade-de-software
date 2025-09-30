@@ -1,0 +1,213 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F8F9FA;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 600px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    letter-spacing: -1px; 
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Subtitulo*/
+header p {
+    color: #6C757D; 
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+h1 strong {
+    font-weight: 900;
+}
+
+.checkmark-icon {
+    font-size: 1.2em;
+    margin-right: 5px;
+    color: #007ACC;
+    font-weight: 700;
+}
+
+.normal-weight {
+    font-weight: 400;
+}
+
+p {
+    color: #888;
+    margin: 5px 0 0;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+#novaTarefa {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#botaoAdicionar {
+    width: 40px;
+    height: 40px;
+    background-color: #007ACC;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#listaDeTarefas {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#listaDeTarefas li {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#listaDeTarefas li:last-child {
+    border-bottom: none;
+}
+
+#listaDeTarefas li span {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 1em;
+}
+
+.checkbox-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.checkbox-circle.completed {
+    background-color: #007ACC;
+    border-color: #007ACC; 
+}
+
+
+.checkbox-circle.completed::after {
+    content: '✓';
+    color: white;
+    font-size: 0.8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.task-text.completed {
+    color: #6c757d;
+    text-decoration: line-through;
+}
+
+.trash-icon {
+    font-size: 2em;
+    margin-left: auto;
+    cursor: pointer;
+    color: #4b4b4b;
+}
+
+/* --- Estilos para o Pop-up de Confirmação --- */
+
+/* Fundo escurecido que cobre a tela inteira */
+.popup-overlay {
+  position: fixed; /* Fica fixo na tela mesmo com rolagem */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Cor preta com 60% de transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que fique na frente de tudo */
+}
+
+/* A caixa do pop-up */
+.popup-box {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 350px; /* Largura máxima para não ficar gigante em telas grandes */
+}
+
+.popup-box p {
+  margin: 0 0 20px 0; /* Espaçamento abaixo do texto */
+  font-size: 1.1em;
+  color: #333;
+}
+
+/* Botões dentro do pop-up */
+.popup-box button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 10px;
+  transition: transform 0.2s;
+}
+
+.popup-box button:hover {
+    transform: scale(1.05);
+}
+
+/* Botão de confirmação (Sim) */
+#popup-btn-sim {
+  background-color: #28a745; /* Verde */
+  color: white;
+}
+
+/* Botão de cancelamento (Não) */
+#popup-btn-nao {
+  background-color: #dc3545; /* Vermelho */
+  color: white;
+}

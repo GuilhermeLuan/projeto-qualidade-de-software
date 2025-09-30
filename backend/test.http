@@ -1,0 +1,21 @@
+POST http://localhost:3000/api/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Nova Tarefa",
+  "descricao": "Descrição da nova tarefa"
+}
+
+###
+DELETE http://localhost:3000/api/tarefas/4
+
+###
+PATCH http://localhost:3000/api/tarefas/3
+Content-Type: application/json
+
+{
+  "estaCompleta": true
+}
+
+###
+GET http://localhost:3000/api/tarefas

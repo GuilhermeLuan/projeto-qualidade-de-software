@@ -1,0 +1,73 @@
+import Router from "express"
+import {TarefaService} from "../services/Tarefa.service.js";
+
+//criando as rotas
+const router = Router();
+const tarefaService = new TarefaService();
+
+// Tratar possibilidade de upar dados vazios
+router.post("/tarefas", async (req, res) => {
+    try {
+        const {titulo, descricao} = req.body;
+        const tarefaSalva = await tarefaService.criarTarefa(titulo, descricao);
+
+        res.status(201).json(tarefaSalva);
+    } catch (error) {
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao deletar a tarefa."
+        });
+    }
+
+    console.log("Tarefa criada com sucesso!")
+});
+
+// Tratar possibilidade de tentar apagar uma tarefa com id inexistente
+router.delete("/tarefas/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        await tarefaService.deletarTarefa(id);
+        res.status(204).json();
+
+        console.log("Tarefa apagada com sucesso!")
+    } catch (error) {
+        console.error("Erro ocorreu ao deletar a tarefa.", error)
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao deletar a tarefa."
+        });
+    }
+})
+
+//criando a rota para marcar e desmarcar a tarefa como completa
+// ver como vai ser pra adaptar isso ao front
+router.patch("/tarefas/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        await tarefaService.atualizarStatusTarefa(id, req.body.estaCompleta);
+        res.status(204).json();
+    } catch (error) {
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao atualizar a tarefa."
+        });
+    }
+
+    console.log("Tarefa marcada/desmarcada com sucesso!")
+});
+
+// Retorno das tarefas pro front em formato JSON
+// Tentar retornar uma mensagem padrão de "Vazio" em caso de nenhuma tarefa existir no banco
+router.get("/tarefas", async (req, res) => {
+    try {
+        const listaTarefas = await tarefaService.listarTarefas();
+        res.status(200).json(listaTarefas)
+    } catch (error) {
+        const status = error.status || (error.name === "NotFoundError" ? 404 : 500);
+        return res.status(status).json({
+            message: error.message || "Erro ocorreu ao listar as tarefas."
+        });
+    }
+})
+
+export default router;
