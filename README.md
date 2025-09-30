@@ -39,7 +39,7 @@ A interface de usuário, focada na interação do usuário:
 ## ✅ Características de qualidade aplicadas
 Para garantir a qualidade da aplicação, focamos nas seguintes características de qualidades estabelecidas na ISO/IEC 25010:
 
-1.Funcionalidade 
+### 1.Funcionalidade 
 Por meio do sistema de gerenciamento de tarefas o usuário  consegue de forma consistente Adicionar, Marcar como concluídas, Remover uma tarefa, bem como Visualizar sua lista de tarefas. Dessa forma, a aplicação atende aos requisitos de:
 
 **Adequação reconhecível:** aplicação é apropriada para atender as necessidades de gerenciamento de tarefas, pois o usuário consegue: 
@@ -58,7 +58,16 @@ Por meio do sistema de gerenciamento de tarefas o usuário  consegue de forma co
 
 **Acessibilidade:** o produto pode ser utilizado por várias pessoas com características e capacidades diversas, como por exemplo pessoas com daltonismo, pois a aplicação usa cores seguras para daltônicos, além de de tipografia e fontes grandes.
 
-**2.Confiabilidade (tratamento de erros, validações).**
+### 2.Confiabilidade (tratamento de erros, validações).
+A aplicação foi desenvolvida para ser confiável, garantindo que funcione de forma consistente e segura por meio de **tratamento de erros e validações**
+
+- Maturidade: O sistema opera de forma estável. As interações entre o frontend em JavaScript e o backend em Node.js foram implementadas para evitar falhas inesperadas durante as operações-padrão, como adicionar ou remover tarefas.
+
+- Tolerância a Falhas: O backend, construído com Express.js, possui rotas bem definidas que isolam as operações. Uma falha ao excluir uma tarefa, por exemplo, não impede que o usuário continue a visualizar ou adicionar outras tarefas.
+
+- Recuperabilidade: Em caso de falha de conexão com o backend, o frontend está preparado para não travar, permitindo que o usuário possa recarregar a página para restabelecer a comunicação com o servidor assim que ele estiver disponível.
+
+- Validação de Entrada: Foi implementada uma validação no frontend para não permitir a adição de tarefas vazias, desabilitando o botão "Adicionar" quando o campo de texto está em branco. Isso previne a inserção de dados inúteis no banco de dados.
 
 **3.Usabilidade (facilidade de uso, acessibilidade).**
 
