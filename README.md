@@ -111,7 +111,23 @@ A estrutura do projeto foi pensada para facilitar futuras manutenções e evolu�
 - **Organização do Repositório:** o uso de branches no Git, conforme o fluxo de trabalho proposto no projeto (main para código estável, develop para integração e feature para novas funcionalidades), foi crucial para manter o código organizado e permitir que a equipe trabalhasse em paralelo sem conflitos, o que é um pilar da manutenibilidade em projetos colaborativos. 
 
 ## 🚀 Instruções de instalação
+Para rodar o projeto localmente, siga os passos abaixo:
 
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   cd seu-repositorio
+
+2.	**Instale as dependências**
+    ``bash
+    npm install
+
+3.	**Inicie o servidor de desenvolvimento**
+    ```bash
+    npm run dev
+
+4.	**Acesse no navegador**
+Abra http://localhost:3000 para visualizar o projeto.
 
 ## 👩‍💻🧑‍💻 Integrantes e funções
 - **Guilherme Basilio:** Frontend e Design
